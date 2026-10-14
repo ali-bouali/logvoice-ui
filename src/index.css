@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Share Tech Mono', 'Fira Code', ui-monospace, monospace;
+  --font-mono: 'Fira Code', ui-monospace, monospace;
+
+  --color-primary: #00f0ff;
+  --color-secondary: #7b61ff;
+  --color-accent: #ff2ec4;
+  --color-warn: #ffb020;
+  --color-danger: #ff3b5c;
+  --color-bg: #050510;
+  --color-bg-deep: #020208;
+  --color-card: #0d1420;
+  --color-border: #24344a;
+  --color-muted: #7f93b3;
+
+  --animate-pulse-slow: pulse-slow 3.2s ease-in-out infinite;
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-spin-slower: spin 22s linear infinite reverse;
+  --animate-scan: scan 6s linear infinite;
+  --animate-flicker: flicker 2.8s ease-in-out infinite;
+  --animate-rise: rise 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.6; }
+  94% { opacity: 1; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at 50% 20%, #0b1220 0%, var(--color-bg) 55%, var(--color-bg-deep) 100%);
+  color: #dce8ff;
+  font-family: var(--font-mono);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-primary) 35%, transparent);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+.text-glow {
+  text-shadow: 0 0 8px currentColor, 0 0 22px color-mix(in srgb, currentColor 60%, transparent);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-primary) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 6%, transparent) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
